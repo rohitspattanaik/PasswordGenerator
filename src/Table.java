@@ -4,10 +4,9 @@ import java.util.Scanner;
 
 public class Table {
 
-    /*Followers table which tracks the frequency of a letter following another
-     * Tracks first order entropy
-     */
-    private int[][] table = new int[26][26];
+    //followers keeps track of frequency of a character following another.
+    //It is a measure of first order entropy based off of the input file.
+    private int[][] followers = new int[26][26];
     private int[] counts = new int[26];
     private int[] starters = new int[26];
 
@@ -32,12 +31,14 @@ public class Table {
                 char nextChar = '~'; //dummy initialization
                 if(Character.isSpaceChar(currentChar)) {
                     prevSpace = true;
+                    continue;
                 }
                 if(!Character.isLetter(currentChar)) {
                     continue;
                 }
                 counts[currentChar - 'a']++;
                 if(prevSpace) {
+                    prevSpace = false;
                     starters[currentChar - 'a']++;
                 }
                 //Second loop here but most of the time will not go through to completion
@@ -58,6 +59,7 @@ public class Table {
                 if(!Character.isLetter(nextChar)) {
                     break; //will not work or will need additional steps if more in while after this loop
                 }
+                followers[currentChar - 'a'][nextChar - 'a']++;
             }
         }
 
@@ -65,7 +67,15 @@ public class Table {
         return true;
     }
 
-    public void printTable() {
+    public void printFollowers() {
         //code to print table
+    }
+
+    public void printCounts() {
+
+    }
+
+    public void printStarters() {
+
     }
 }
