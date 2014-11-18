@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class Table {
 
     //followers keeps track of frequency of a character following another.
-    //It is a measure of first order entropy based off of the input file.
     private int[][] followers = new int[26][26];
     private int[] counts = new int[26];
     private int[] starters = new int[26];
