@@ -19,7 +19,7 @@ public class Passwords {
         table.printCounts();
         System.out.println();
         table.printStarters();
-        if(!table.writeToFile(false)) {
+        if(!table.writeToFile(true)) {
             System.out.println("write failed");
         }
     }
