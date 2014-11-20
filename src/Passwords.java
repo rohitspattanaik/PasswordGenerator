@@ -16,17 +16,21 @@ public class Passwords {
         table = new Table();
         generator = new PasswordGenerator();
         table.generateTable(fileName);
-        //table.printFollowers();
-        //System.out.println();
-        //table.printCounts();
-        //System.out.println();
-        //table.printStarters();
+        System.out.println("\nFollowers Table : ");
+        table.printFollowers();
+        System.out.println();
+        System.out.println("Counts : ");
+        table.printCounts();
+        System.out.println();
+        System.out.println("Starters : ");
+        table.printStarters();
         if(!table.writeToFile(true)) {
             System.out.println("write failed");
         }
         generator.setFollowers(table.getFollowers());
         generator.setCounts(table.getCounts());
         generator.setStarters(table.getStarters());
+        System.out.println();
         for(int i = 0; i < noOfPasswords; i++) {
             String temp = generator.generatePassword(passwordLength);
             if(temp == null) {

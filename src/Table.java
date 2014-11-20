@@ -21,10 +21,8 @@ public class Table {
 
         while(scanner.hasNextLine()) {
             boolean prevSpace = true; //If previous character was a space. Helps determine if starter
-            //boolean nextSpace = false;
             String line = scanner.nextLine();
             line = line.toLowerCase();
-            //System.out.println(line);
             //Not considering a character that follows one onto the next line as a follower
             for(int i = 0; i < line.length() - 1; i++) {
                 char currentChar = line.charAt(i);
@@ -37,19 +35,15 @@ public class Table {
                     continue;
                 }
                 else {
-                    //Eliminates special letters like accents, etc
                     if(!(currentChar >= 'a' && currentChar <= 'z')) {
                         continue;
                     }
                 }
-                //System.out.println(currentChar);
 
                 //Second loop here but most of the time will not go through to completion
                 for(int j = i + 1; j < line.length(); j++) {
                     nextChar = line.charAt(j);
                     if(Character.isLetter(nextChar)) {
-                        //System.out.print(nextChar + " ");
-                        //System.out.println((int)nextChar);
                         //Eliminates special letters like accents, etc
                         if(!(nextChar >= 'a' && nextChar <= 'z')) {
                             continue;
@@ -62,7 +56,6 @@ public class Table {
                     }
                 }
                 if(Character.isSpaceChar(nextChar)) {
-                    //nextSpace = true;
                     continue;
                 }
                 //No more letters in line, so continue to next one
@@ -70,12 +63,7 @@ public class Table {
                     break; //will not work or will need additional steps if more in while after this loop
                 }
                 followers[currentChar - 'a'][nextChar - 'a']++;
-                //if(!nextSpace) {
                     counts[currentChar - 'a']++;
-               // }
-                //else {
-                //    nextSpace = false;
-                //}
 
                 if(prevSpace) {
                     prevSpace = false;
